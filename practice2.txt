@@ -1,0 +1,30 @@
+1.Create table
+create table st_info(prn int, name varchar2(20), m1 number,m2 number, m3 number)
+Table created.
+
+2. To see the attributes in the table or table structure 
+desc st_info # st_info is the table who's structure will be displayed
+
+3.To insert data in the table
+insert into st_info values(101,'abc',75,68,90);
+1 row created
+
+4. add column to st_info:
+alter table st_info add total number;
+alter table st_info add per number;
+
+insert into st_info values(101,'abc',5,6,7); #error as total and per is not entererd 
+insert into st_info values(101,'abc',5,6,7,null,null); correct 
+
+5. To insert 10 rows
+insert into st_info values(101,'raj',54,66,87,null,null);
+insert into st_info values(101,'sam',85,96,47,null,null);
+insert into st_info values(101,'ram',65,68,67,null,null);
+insert into st_info values(101,'ron',59,61,78,null,null);
+insert into st_info values(101,'bob',85,69,71,null,null);
+insert into st_info values(101,'rohit',52,63,74,null,null);
+insert into st_info values(101,'virat',58,61,75,null,null);
+insert into st_info values(101,'gill',58,64,97,null,null);
+insert into st_info values(101,'kabir',50,60,70,null,null);
+
+6.select * from st_info; to check inserted data in table

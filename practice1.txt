@@ -1,0 +1,18 @@
+To create table use command create
+To add data use command insert
+to edit data use command altr
+
+1.create user d2 identified by sit;
+(user d2 is created with password sit)
+(but problem is d2 user need some permissions for database operations)
+
+2.Command: grant connect, resource to d2;
+(permission granted)
+
+3.alter user d2 identified by ****;
+(password can have only 0-9,a-z,A-Z only, no special character are allowed)
+
+4.enter username as: d2@d2_database
+(user d2 is now connecting to database d2)
+
+5. commit; or exit
