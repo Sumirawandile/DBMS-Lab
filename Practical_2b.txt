@@ -1,0 +1,79 @@
+
+
+
+
+
+date : 2/2/26
+CREATING SEQUENCE 
+
+SQL> select * from tab;
+SQL> desc st_info;
+
+-creating seq for st_info
+
+To create sequence:
+SQL> create sequence st_sq start with 101 increment by 1;
+
+-to insert one row with sequence 
+SQL> insert into st_info (prn,name,m1,m2,m3) values(st_sq.nextval, 'xa1011',12,13,15);
+1 row created 
+total 12 rows
+
+select * from tab;
+desc st_info;
+ select max(prn) from st_info;
+
+
+1)TO CREATE SEQUENECE USING A NEW TABLE:
+SQL> create table emp(emp_id int primary key, name varchar2(20));
+
+SQL> create sequence emp_sq start with 1 increment by 1;
+
+SQL> insert into emp (emp_id,name) values(emp_seq.nextval,'Ram');
+
+(drawback of sequence , records can be repeated, we need to paste only one time or the records will be duplicated )
+
+2)ALTERING TABLE BY ADDING NEW COLUMN MOBILE NUMBER
+
+SQL> alter table emp add mobile_no number;
+
+3)TO DELETE THE DATA FROOM TABLE
+SQL> truncate table emp;
+Table truncated.
+
+SQL> select * from emp;
+
+no rows selected
+
+TO DELETE SEQUENCE:
+SQL> drop sequence emp_seq;
+Sequence dropped.
+
+
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x1',1392375492);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x2',2539457486);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x3',1392375647);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x4',5757432225);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x5',8935629386);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x6',3956948592);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x7',237547692);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x8,9375948292);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x8',9375948292);
+SQL> insert into emp (emp_id,name,mobile_no) values(emp_seq.nextval,'x9',9087689799);
+SQL> select * from emp;
+
+    EMP_ID NAME                  MOBILE_NO
+---------- -------------------- ----------
+         1 x1                   1392375492
+         2 x2                   2539457486
+         3 x3                   1392375647
+         4 x4                   5757432225
+         5 x5                   8935629386
+         6 x6                   3956948592
+         7 x7                    237547692
+         8 x8                   9375948292
+         9 x9                   9087689799
+
+9 rows selected.
+
+
