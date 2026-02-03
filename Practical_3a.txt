@@ -1,0 +1,64 @@
+
+1)SALARY AVERAGE 
+FORMULA - avg(i.salary)
+SQL>  select i.instructor_id, i.name, i.salary, d.name, avg(i.salary) as avg_salary from instructor I join Department d on i.dept_id=d.dept_id where d.name ='Computer Science';
+
+2)FIND THE AVERAGE SALARY IN EACH DEPARTMENT
+select d.name as dept_name, avg(i.salary) as avg_salary from department D join Instructor I on d.dept_id = i.dept_id group by d.name;
+
+DEPT_NAME                                          AVG_SALARY
+-------------------------------------------------- ----------
+Mathematics                                             98000
+Physics                                                 98250
+Computer Science                                        85250
+Biology                                                118500
+
+
+
+3)TO FIND TOTAL
+FORMULA- sum(i.salary)
+SQL> select sum(salary) as total from instructor where salary > 30000;
+
+     TOTAL
+----------
+    681500
+
+
+4) FIND THE NAMES OF ALL DEPARTMENTS WHOSE BUILDING NAME INCLUDE SUBSTRING 'SCI'
+SQL> select * from department where lower(name) like '%sci%';
+
+   DEPT_ID NAME
+---------- --------------------------------------------------
+BUILDING                                               BUDGET UNIVERSITY_ID
+-------------------------------------------------- ---------- -------------
+         1 Computer Science
+Taylor                                                 100000             1
+
+(% PERCENT IS USED BECAUSE THE TABLE CONTAINS SCIENECE FULLY)
+
+
+
+5)display the length of the name of all the students 
+SQL>  select length(name) as total_length from instructor;
+
+   DEPT_ID NAME
+---------- --------------------------------------------------
+BUILDING                                               BUDGET UNIVERSITY_ID
+-------------------------------------------------- ---------- -------------
+         2 Mathematics
+Watson                                                  90000             1
+
+SQL> SQL> select sum(length(name)) as total_length from instructor; 
+TOTAL_LENGTH
+------------
+           8
+          10
+          11
+          11
+          13
+          10
+          12
+
+7 rows selected
+
+6)RETRIEVE TOTAL NUMBER OF INSTRUCTOR.
