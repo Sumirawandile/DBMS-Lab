@@ -1,0 +1,80 @@
+CONDITIONS
+IF STATEMENT
+
+SYNTAX : 
+if CONDITION THEN 
+  True st,
+else 
+   else st.
+
+
+1)Find the greatest of all numbers
+CREATE OR REPLACE PROCEDURE greatestAB(a IN NUMBER, b IN NUMBER)
+AS
+BEGIN
+   IF a > b THEN
+      DBMS_OUTPUT.PUT_LINE('Greatest number is : ' || a);
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('Greatest number is : ' || b);
+   END IF;
+END;
+/
+OUPUT : 
+Procedure created.
+
+SQL> SET SERVEROUPT ON
+SP2-0158: unknown SET option "SERVEROUPT"
+SQL> SET SERVEROUTPUT ON
+SQL> exec greatestAB(10,20);
+Greatest number is : 20
+
+PL/SQL procedure successfully completed.
+
+
+
+2)GREATEST OF 3 NUMBERS 
+CREATE OR REPLACE PROCEDURE greatestABC(a IN NUMBER, b IN NUMBER, c IN NUMBER)
+AS
+BEGIN
+   IF a > b AND a > c THEN
+      DBMS_OUTPUT.PUT_LINE('Greatest number is : ' || a);
+   ELSIF b > a AND b > c THEN
+      DBMS_OUTPUT.PUT_LINE('Greatest number is : ' || b);
+   ELSE
+      DBMS_OUTPUT.PUT_LINE('Greatest number is : ' || c);
+   END IF;
+END;
+/
+
+3)CHECK WHETHER THE STUDENT IS 
+CREATE OR REPLACE PROCEDURE Sub_Avg
+(cs IN NUMBER, os IN NUMBER, dbms IN NUMBER, m3 IN NUMBER)
+AS
+   total NUMBER;
+   per   NUMBER;
+BEGIN
+   total := cs + os + dbms + m3;
+   per := (total / 400) * 100;
+
+   IF cs < 40 OR os < 40 OR dbms < 40 OR m3 < 40 THEN
+      DBMS_OUTPUT.PUT_LINE('FAIL');
+   ELSE
+      IF per > 75 THEN
+         DBMS_OUTPUT.PUT_LINE('GRADE A');
+      ELSIF per > 65 AND per <= 75 THEN
+         DBMS_OUTPUT.PUT_LINE('GRADE B');
+      ELSIF per > 55 AND per <= 65 THEN
+         DBMS_OUTPUT.PUT_LINE('GRADE C');
+      ELSE
+         DBMS_OUTPUT.PUT_LINE('GRADE D');
+      END IF;
+
+      DBMS_OUTPUT.PUT_LINE('PERCENTAGE IS ' || per);
+   END IF;
+END;
+/
+
+
+     
+
+

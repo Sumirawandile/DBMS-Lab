@@ -1,0 +1,114 @@
+while loop
+syntax :
+       begin
+       initialization st;
+       while cond loop
+       True st,
+       increament/decrement
+    end loop;
+   end;
+1)sum of 1 to n using while loop
+CREATE OR REPLACE PROCEDURE wl1to10
+as
+   i NUMBER := 1;
+   s NUMBER := 0;
+BEGIN
+   WHILE i <= 10 LOOP
+      s := s + i;
+      i := i + 1;
+   END LOOP;
+   DBMS_OUTPUT.PUT_LINE('Result of sum : '||s);
+  
+END;
+/
+
+result
+SQL> CREATE OR REPLACE PROCEDURE wl1to10
+  2  as
+  3     i NUMBER := 1;
+  4     s NUMBER := 0;
+  5  BEGIN
+  6     WHILE i <= 10 LOOP
+  7        s := s + i;
+  8        i := i + 1;
+  9     END LOOP;
+ 10     DBMS_OUTPUT.PUT_LINE('Result of sum : '||s);
+ 11
+ 12  END;
+ 13  /
+
+Procedure created.
+
+SQL> set serveroutput on
+SQL> execute wl1to10
+Result of sum : 55
+
+PL/SQL procedure successfully completed.
+
+
+2)SUM OF N NUMBER USING WHILE
+CREATE OR REPLACE PROCEDURE sumN(n IN NUMBER)
+AS
+   i NUMBER := 1;
+   s NUMBER := 0;
+BEGIN
+   WHILE i <= n LOOP
+      s := s + i;
+      i := i + 1;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Sum of ' || n || ' numbers = ' || s);
+END;
+/
+result:
+Procedure created.
+
+SQL> set serveroutput on
+SQL> EXEC sumN(10);
+Sum of 10 numbers = 55
+
+PL/SQL procedure successfully completed.
+
+
+3)if i!=0 then to avoid infinite loop
+CREATE OR REPLACE PROCEDURE sumN(n IN NUMBER)
+AS
+   i NUMBER := 1;
+   s NUMBER := 0;
+BEGIN
+   WHILE i != 0 LOOP
+      s := s + i;
+      i := i + 1;
+   EXIT WHEN i=n;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Sum of ' || n || ' numbers = ' || s);
+END;
+/
+
+FOR LOOP
+1)FOR LOOP SUM OF 1 TO 10
+CREATE OR REPLACE PROCEDURE fl1to10
+AS
+   s NUMBER := 0;
+BEGIN
+   FOR i IN 1..10 LOOP
+      s := s + i;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Result of sum : ' || s);
+END;
+/
+
+2)
+CREATE OR REPLACE PROCEDURE sumNF(n IN NUMBER)
+AS
+   s NUMBER := 0;
+BEGIN
+   FOR i IN 1..n LOOP
+      s := s + i;
+   END LOOP;
+
+   DBMS_OUTPUT.PUT_LINE('Sum of ' || n || ' numbers = ' || s);
+END;
+/
