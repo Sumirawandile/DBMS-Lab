@@ -1,0 +1,32 @@
+TRIGGERS:
+Syntax : Create or replace trigger trigger_name
+               Before || After for each
+               Insert || Update || Delete on Table_name
+         Begin
+              Code
+         End;
+          /
+
+BEFORE TRIGGER 
+ROW LEVEL
+CREATE or REPLACE Trigger Tri_info
+     BEFORE update ON st_info for Each Row
+     BEGIN
+          DBMS_OUTPUT.PUT_LINE('This is statement level trigger fired');
+     END;
+    /
+Output:
+SQL> SET SERVEROUTPUT ON;
+SQL> update st_info set total = sub1+sub2+sub3+sub4 where sub1>80;
+This is statement level trigger fired
+
+2 rows updated.    
+
+CREATE OR REPLACE TRIGGER Tri_insert
+BEFORE INSERT ON st_info FOR EACH ROW
+BEGIN
+    IF (:NEW.sub1 < 0 OR :NEW.sub1 > 100) THEN
+        DBMS_OUTPUT.PUT_LINE('Invalid marks');
+    END IF;
+END;
+/
