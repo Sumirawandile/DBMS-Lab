@@ -1,0 +1,45 @@
+1)Create a table emp2 with fields empno as int, name as character, category as int (take only 3 categories i.e 1,2 & 3)
+
+1)Create table emp2 (
+    empno int primary key,
+    name varchar(100),
+    category INT,
+    check (category in(1,2,3))
+    );
+
+
+2)design a trigger for insertion or updating a new record in capital letters only
+CREATE OR REPLACE TRIGGER trg_emp2_cap
+    BEFORE INSERT OR UPDATE ON emp2
+    for each row
+    Begin
+         :NEW.name := UPPER(:NEW.name);
+    End;
+    /
+
+
+
+3)ADD ANOTHER FIELD SALARY AS NUMBER TO THE TABLE
+Alter table emp2 add salary Number;
+
+4)Design a trigger for insertion or updation for the following
+if category is 1 then salary should be more than 10000
+if category is 2 then salary should be more than 20000
+if category is 3 then salary should be more than 30000
+
+CREATE OR REPLACE TRIGGER emp2_salary_check
+BEFORE INSERT OR UPDATE ON emp2
+FOR EACH ROW
+BEGIN
+    IF :NEW.category = 1 AND :NEW.salary <= 10000 THEN
+       RAISE_ERROR(-20001,'Salary must be > 10000 for category 1');
+        
+    ELSIF :NEW.category = 2 AND :NEW.salary <= 20000 THEN
+       RAISE_ERROR(-20002,'Salary must be > 20000 for category 2');
+        
+    ELSIF :NEW.category = 3 AND :NEW.salary <= 30000 THEN
+        RAISE_ERROR(-20003,'Salary must be > 30000 for category 3');
+
+    END IF;
+END;
+/
