@@ -104,6 +104,7 @@ begin
     insert into emp2_aud 
         (empno, name, category, salary, new_salary, mod_date)
     values 
-        (:old.empno, :old.name, :old.category, :old.salary, :new.salary, sysdate);
+        (empno, name, category, :old.salary, :new.salary, sysdate);
 end;
 /
+
