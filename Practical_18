@@ -23,7 +23,7 @@ BEGIN
   END IF;
 END;
 /
-INSERT INTO emp VALUES (1, 'Vedika', 'Engineer');
+INSERT INTO emp VALUES (1, 'Sumira', 'Engineer');
 UPDATE emp SET job = 'Manager' WHERE empno = 1;
 DELETE FROM emp WHERE empno = 1
 SELECT * FROM audit_emp;
